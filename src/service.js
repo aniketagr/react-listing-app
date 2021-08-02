@@ -3,8 +3,8 @@ import authHeader from "./auth-header";
 
 
 // TODO Need to configure
-const api_auth_url = "http://localhost:8080/api/auth/";
-const api_url = "http://localhost:8080/api/user/";
+const api_auth_url = "http://3.109.124.187:8080/api/auth/";
+const api_url = "http://3.109.124.187:8080/api/user/";
 
 const register = (username, email, password) => {
   return axios.post(api_auth_url + "signup", {
