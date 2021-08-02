@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PostEditing from './PostEditing';
 
 function PostTable({ errorData, postsData, setterPost }) {
+    const [editingCompFlag, setEditingCompFlag] = useState(false);
+    const [recordId, setRecordId] = useState('');
 
     function editPost(id) {
-        console.log(`id is ${id}`);
-        <PostEditing recordId={id} />
+        setEditingCompFlag(true);
+        setRecordId(id);
     }
 
     function deletePost(id) {
@@ -14,53 +16,53 @@ function PostTable({ errorData, postsData, setterPost }) {
     }
 
     return (
-        errorData ? errorData :
-            <table>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>User ID</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        postsData && postsData.map(items => {
-                            return (
-                                <tr key={items.id}>
-                                    <td>{items.id}</td>
-                                    <td>{items.userId}</td>
-                                    <td>{items.title}</td>
-                                    <td>{items.body}</td>
-                                    <td>
-                                        <button
-                                            // onClick={() => <PostEditing recordId={items.id} />}>
-                                            onClick={() => editPost(items.id)}>
-                                            Edit
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button
-                                            onClick={() => deletePost(items.id)}>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-                    {postsData && !postsData.length &&
+        editingCompFlag ? <PostEditing recordId={recordId} /> :
+            errorData ? errorData :
+                <table>
+                    <thead>
                         <tr>
-                            <td colSpan="6">
-                                <div>No Users To Display</div>
-                            </td>
+                            <th>Id</th>
+                            <th>User ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {
+                            postsData && postsData.map(items => {
+                                return (
+                                    <tr key={items.id}>
+                                        <td>{items.id}</td>
+                                        <td>{items.userId}</td>
+                                        <td>{items.title}</td>
+                                        <td>{items.body}</td>
+                                        <td>
+                                            <button 
+                                                onClick={() => editPost(items.id)}>
+                                                Edit
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                onClick={() => deletePost(items.id)}>
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                        {postsData && !postsData.length &&
+                            <tr>
+                                <td colSpan="6">
+                                    <div>No Users To Display</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
     )
 }
 

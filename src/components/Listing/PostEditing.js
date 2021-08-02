@@ -2,58 +2,72 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function PostEditing({ recordId }) {
-    const [editPost, setEditPost] = useState([]);
+    const [editPost, setEditPost] = useState({ userId: '', body: '', title: '' });
     const [editError, setEditError] = useState('');
 
     useEffect(() => {
         axios.get(`http://localhost:8081/editPost/${recordId}`)
             .then(response => {
-                setEditPost(response.data);
-                console.log(editPost);
+                setEditPost({
+                    userId: response.data.userId,
+                    body: response.data.body,
+                    title: response.data.title
+                });
                 setEditError('');
             })
             .catch(error => {
-                setEditPost([]);
+                setEditPost({ userId: '', body: '', title: '' });
                 setEditError('Something went wrong!');
-                console.log(error);
                 console.log(editError);
             })
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    console.log('hereerrer');
+    const submitHandler = e => {
+        axios.put(`http://localhost:8081/updatePost/${recordId}`, editPost)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        // e.preventDefault(); // Stop page reloading
+    }
 
     return (
-        // <React.Fragment>
-        <div>
-            {console.log(recordId)}
-
-            <form onSubmit={this.submitHandler}>
-                <div>
-                    <input
-                        type='text'
-                        name='userId'
-                        // value={userId}
-                        onChange={this.changeHandler}
-                    />
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        name='title'
-                        // value={title}
-                        onChange={this.changeHandler} />
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        name='body'
-                        // value={body}
-                        onChange={this.changeHandler} />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-            {/* </React.Fragment> */}
-        </div>
+        <form>
+            <div>
+                <label>User Id : </label>
+                <input
+                    type='text'
+                    name='userId'
+                    placeholder='userId'
+                    value={editPost.userId}
+                    onChange={e => setEditPost({ ...editPost, userId: e.target.value })}
+                />
+            </div>
+            <div>
+                <label>Title : </label>
+                <input
+                    type='text'
+                    name='title'
+                    placeholder='title'
+                    value={editPost.title}
+                    onChange={e => setEditPost({ ...editPost, title: e.target.value })}
+                />
+            </div>
+            <div>
+                <label>Description : </label>
+                <input
+                    type='text'
+                    name='body'
+                    placeholder='body'
+                    value={editPost.body}
+                    onChange={e => setEditPost({ ...editPost, body: e.target.value })}
+                />
+            </div>
+            <button onClick={submitHandler}>Submit</button>
+        </form>
     )
 }
 
