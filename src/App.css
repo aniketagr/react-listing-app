@@ -27,13 +27,13 @@
 
 /* Custom Style */
 
-.card-container.card {
+.cards-container.cards {
   max-width: 350px !important;
   min-width: 300px;
   padding: 40px 40px;  
 }
 
-.card {
+.cards {
   background-color: #2694dd;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
@@ -51,12 +51,17 @@ label {
   margin-top: 10px; 
 }
 
-.alert-danger{
-  color: #df0606d1;
+.form-input{
+  border-radius: 2px;
+  border: none;
+}
+
+.alerts-danger{
+  color: #d20909d1;
   font-size: 12px;
 }
 
-.btn {
+.button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -71,11 +76,17 @@ label {
 
 .home-header{
   top: 0px;
-  box-shadow: rgb(220 220 220) 0px 2px 10px;
-  text-align: right;
+  box-shadow: rgb(169 169 169) 0px 2px 10px;
+  float: center;
+  text-align: right;  
+  position: fixed;
+  background-color: #d5ecfc;
+  top: 0;
+  min-height: 50px;
+  width: 100%
 }
 
 .home-logout{
-  padding: 10px;
+  padding: 15px;
   color: #4CAF50;
 }

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+// import { useHistory } from 'react-router-dom';
+// import { hashHistory } from 'react-router';
 
 function PostEditing({ recordId }) {
+    // const history = useHistory();
     const [editPost, setEditPost] = useState({ userId: '', body: '', title: '' });
     const [editError, setEditError] = useState('');
 
@@ -27,15 +31,23 @@ function PostEditing({ recordId }) {
         axios.put(`http://localhost:8081/updatePost/${recordId}`, editPost)
             .then(res => {
                 console.log(res);
+                toast.success('Post updated successfully', {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                // history.push('./PostListing');
+                // hashHistory.push('PostListing');
             })
             .catch(err => {
                 console.log(err);
+                toast.error('Error occured while updating', {
+                    position: toast.POSITION.TOP_RIGHT,
+                });
             });
-        // e.preventDefault(); // Stop page reloading
+        e.preventDefault(); // Stop page reloading
     }
 
     return (
-        <form>
+        <form style={{ textAlign: 'center' }}>
             <div>
                 <label>User Id : </label>
                 <input

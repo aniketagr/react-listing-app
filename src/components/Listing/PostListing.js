@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.css';
 import PostListingHeader from './PostListingHeader';
 import PostTable from './PostTable';
 
@@ -21,12 +22,14 @@ function PostListing() {
 
     return (
         <React.Fragment>
-            <PostListingHeader />
-            <PostTable
-                errorData={error}
-                postsData={posts}
-                setterPost={setPosts}  //Passing setter function to update post data
-            />
+            <div style={{marginTop:'50px'}}>
+                <PostListingHeader />
+                <PostTable
+                    errorData={error}
+                    postsData={posts}
+                    setterPost={setPosts}  //Passing setter function to update post data
+                />
+            </div>
         </React.Fragment>
     )
 }
