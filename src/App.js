@@ -8,6 +8,7 @@ import { isEmail } from "validator"
 
 import Service from "./service";
 import './App.css';
+import PostListing from './components/Listing/PostListing';
 
 
 // Check mandatory field
@@ -114,66 +115,66 @@ const Register = (props) => {
 
   return (
     
-      <div className="card card-container">
-        <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
-            <div>
-              <div className="form-elemt">
-                <label htmlFor="username">Username</label>
-                <Input
-                  type="text"
-                  className="form-input"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                  validations={[required, validateUsername]}
-                />
-              </div>
-
-              <div className="form-elemt">
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="text"
-                  className="form-input"
-                  name="email"
-                  value={email}
-                  onChange={onChangeEmail}
-                  validations={[required, validEmail]}
-                />
-              </div>
-
-              <div className="form-elemt">
-                <label htmlFor="password">Password</label>
-                <Input
-                  type="password"
-                  className="form-input"
-                  name="password"
-                  value={password}
-                  onChange={onChangePassword}
-                  validations={[required, validatePassword]}
-                />
-              </div>
-
-              <div className="form-elemt">
-                <button className="btn" style={{cursor:'pointer'}}>Sign Up</button>
-              </div>
-            </div>
-          )}
-
-          {message && (
+    <div className="card card-container">
+      <Form onSubmit={handleRegister} ref={form}>
+        {!successful && (
+          <div>
             <div className="form-elemt">
-              <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
-                role="alert"
-              >
-                {message}
-              </div>
+              <label htmlFor="username">Username</label>
+              <Input
+                type="text"
+                className="form-input"
+                name="username"
+                value={username}
+                onChange={onChangeUsername}
+                validations={[required, validateUsername]}
+              />
             </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
-        <div style={{cursor:'pointer', float: "right",  fontSize: '11px'}}><a onClick= {props.login}>Login</a></div> 
-      </div>
+
+            <div className="form-elemt">
+              <label htmlFor="email">Email</label>
+              <Input
+                type="text"
+                className="form-input"
+                name="email"
+                value={email}
+                onChange={onChangeEmail}
+                validations={[required, validEmail]}
+              />
+            </div>
+
+            <div className="form-elemt">
+              <label htmlFor="password">Password</label>
+              <Input
+                type="password"
+                className="form-input"
+                name="password"
+                value={password}
+                onChange={onChangePassword}
+                validations={[required, validatePassword]}
+              />
+            </div>
+
+            <div className="form-elemt">
+              <button className="btn" style={{cursor:'pointer'}}>Sign Up</button>
+            </div>
+          </div>
+        )}
+
+        {message && (
+          <div className="form-elemt">
+            <div
+              className={ successful ? "alert alert-success" : "alert alert-danger" }
+              role="alert"
+            >
+              {message}
+            </div>
+          </div>
+        )}
+        <CheckButton style={{ display: "none" }} ref={checkBtn} />
+      </Form>
+      <div style={{cursor:'pointer', float: "right",  fontSize: '11px'}}><a onClick= {props.login}>Login</a></div> 
+    </div>
    
   );
 };
@@ -217,8 +218,8 @@ const Login = (props) => {
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
-            error.message ||
-            error.toString();
+              error.message ||
+              error.toString();
 
           setLoading(false);
           setMessage(resMessage);
@@ -231,48 +232,48 @@ const Login = (props) => {
 
   return (
     <div className="card card-container">
-        <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-elemt">
-            <label htmlFor="username">Username</label>
-            <Input
-              type="text"
-              className="form-input"
-              name="username"
-              value={username}
-              onChange={onChangeUsername}
-              validations={[required]}
-            />
-          </div>
+      <Form onSubmit={handleLogin} ref={form}>
+        <div className="form-elemt">
+          <label htmlFor="username">Username</label>
+          <Input
+            type="text"
+            className="form-input"
+            name="username"
+            value={username}
+            onChange={onChangeUsername}
+            validations={[required]}
+          />
+        </div>
 
-          <div className="form-elemt">
-            <label htmlFor="password">Password</label>
-            <Input
-              type="password"
-              className="form-input"
-              name="password"
-              value={password}
-              onChange={onChangePassword}
-              validations={[required]}
-            />
-          </div>
+        <div className="form-elemt">
+          <label htmlFor="password">Password</label>
+          <Input
+            type="password"
+            className="form-input"
+            name="password"
+            value={password}
+            onChange={onChangePassword}
+            validations={[required]}
+          />
+        </div>
 
-          <div className="form-elemt">
-            <button className="btn" disabled={loading} style={{cursor:'pointer'}}>
-              <span>Login</span>
-            </button>
-          </div>
+        <div className="form-elemt">
+          <button className="btn" disabled={loading} style={{cursor:'pointer'}}>
+            <span>Login</span>
+          </button>
+        </div>
 
-          {message && (
-            <div className="form-elemt">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
+        {message && (
+          <div className="form-elemt">
+            <div className="alert alert-danger" role="alert">
+              {message}
             </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
-         <div style={{cursor:'pointer',float: "right", fontSize: '11px'}}><a onClick= {props.register}>Register</a></div>
-      </div>
+          </div>
+        )}
+        <CheckButton style={{ display: "none" }} ref={checkBtn} />
+      </Form>
+      <div style={{cursor:'pointer',float: "right", fontSize: '11px'}}><a onClick= {props.register}>Register</a></div>
+    </div>
   );
 };
 
@@ -322,10 +323,9 @@ function Homepage(props) {
       <a onClick= {logout} style={{cursor:'pointer',  padding: '2px 20px',color: '#e5840c'}}>Logout</a>
       </div>
     </div>
-    <div className = "card card-container">
-      
+    <PostListing />
+    <div className = "card card-container" style={{ display: "none" }}>
       <div>{content}</div>
-      <div style={{float: "right", fontSize: '11px'}}></div>    
     </div>
    </div>
 
