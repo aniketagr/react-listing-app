@@ -155,7 +155,7 @@ const Register = (props) => {
               </div>
 
               <div className="form-elemt">
-                <button className="btn">Sign Up</button>
+                <button className="btn" style={{cursor:'pointer'}}>Sign Up</button>
               </div>
             </div>
           )}
@@ -172,7 +172,7 @@ const Register = (props) => {
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
-        <div style={{float: "right",  fontSize: '11px'}}><a onClick= {props.login}>Login</a></div> 
+        <div style={{cursor:'pointer', float: "right",  fontSize: '11px'}}><a onClick= {props.login}>Login</a></div> 
       </div>
    
   );
@@ -257,7 +257,7 @@ const Login = (props) => {
           </div>
 
           <div className="form-elemt">
-            <button className="btn" disabled={loading}>
+            <button className="btn" disabled={loading} style={{cursor:'pointer'}}>
               <span>Login</span>
             </button>
           </div>
@@ -271,7 +271,7 @@ const Login = (props) => {
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
-         <div style={{float: "right", fontSize: '11px'}}><a onClick= {props.register}>Register</a></div>
+         <div style={{cursor:'pointer',float: "right", fontSize: '11px'}}><a onClick= {props.register}>Register</a></div>
       </div>
   );
 };
@@ -315,12 +315,20 @@ function Homepage(props) {
     );
   }
   return (
-   <div className = "card card-container">
-     <button onClick = {getData}>Data</button>
-     <div>{content}</div>
-     <div style={{float: "right", fontSize: '11px'}}><a onClick= {logout}>Logout</a></div>    
+  <div>
+    <div class = "home-header">
+      <div class= "home-logout" >
+        <a onClick = {getData} style={{cursor:'pointer'}}>Data</a>
+      <a onClick= {logout} style={{cursor:'pointer',  padding: '2px 20px',color: '#e5840c'}}>Logout</a>
+      </div>
+    </div>
+    <div className = "card card-container">
+      
+      <div>{content}</div>
+      <div style={{float: "right", fontSize: '11px'}}></div>    
+    </div>
    </div>
-  
+
   );
 }
 
