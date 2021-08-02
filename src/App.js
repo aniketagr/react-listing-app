@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // Validation Module
 import Form from "react-validation/build/form";
@@ -114,7 +117,7 @@ const Register = (props) => {
   };
 
   return (
-    
+
     <div className="card card-container">
       <Form onSubmit={handleRegister} ref={form}>
         {!successful && (
@@ -156,7 +159,7 @@ const Register = (props) => {
             </div>
 
             <div className="form-elemt">
-              <button className="btn" style={{cursor:'pointer'}}>Sign Up</button>
+              <button className="btn" style={{ cursor: 'pointer' }}>Sign Up</button>
             </div>
           </div>
         )}
@@ -164,7 +167,7 @@ const Register = (props) => {
         {message && (
           <div className="form-elemt">
             <div
-              className={ successful ? "alert alert-success" : "alert alert-danger" }
+              className={successful ? "alert alert-success" : "alert alert-danger"}
               role="alert"
             >
               {message}
@@ -173,9 +176,9 @@ const Register = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{cursor:'pointer', float: "right",  fontSize: '11px'}}><a onClick= {props.login}>Login</a></div> 
+      <div style={{ cursor: 'pointer', float: "right", fontSize: '11px' }}><a onClick={props.login}>Login</a></div>
     </div>
-   
+
   );
 };
 
@@ -188,7 +191,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  
+
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -218,8 +221,8 @@ const Login = (props) => {
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
-              error.message ||
-              error.toString();
+            error.message ||
+            error.toString();
 
           setLoading(false);
           setMessage(resMessage);
@@ -258,7 +261,7 @@ const Login = (props) => {
         </div>
 
         <div className="form-elemt">
-          <button className="btn" disabled={loading} style={{cursor:'pointer'}}>
+          <button className="btn" disabled={loading} style={{ cursor: 'pointer' }}>
             <span>Login</span>
           </button>
         </div>
@@ -272,29 +275,29 @@ const Login = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{cursor:'pointer',float: "right", fontSize: '11px'}}><a onClick= {props.register}>Register</a></div>
+      <div style={{ cursor: 'pointer', float: "right", fontSize: '11px' }}><a onClick={props.register}>Register</a></div>
     </div>
   );
 };
 
 // User login and registration exchange
 function User(props) {
-  const [sign,setSign] = useState();
-  const registerPage = () => {setSign ("register");}
-  const loginPage = () => {setSign ();}
+  const [sign, setSign] = useState();
+  const registerPage = () => { setSign("register"); }
+  const loginPage = () => { setSign(); }
   return (
     <div className="App">
       <header className="App-header">
         {
-          sign === 'register' ? 
-          <div>
-            <Register login = {loginPage} registeredUser = {loginPage}/>
-          </div>  : 
-          <div>
-            <Login register = {registerPage} signedUser = {props.logedInUser}/> 
-          </div>
+          sign === 'register' ?
+            <div>
+              <Register login={loginPage} registeredUser={loginPage} />
+            </div> :
+            <div>
+              <Login register={registerPage} signedUser={props.logedInUser} />
+            </div>
         }
-             
+
       </header>
     </div>
   );
@@ -303,7 +306,7 @@ function User(props) {
 
 // Content page 
 function Homepage(props) {
-  const [content,setContent] = useState("Welcome to our Application")
+  const [content, setContent] = useState("Welcome to our Application")
   const logout = () => {
     Service.logout();
     props.logout(false);
@@ -316,32 +319,36 @@ function Homepage(props) {
     );
   }
   return (
-  <div>
-    <div class = "home-header">
-      <div class= "home-logout" >
-        <a onClick = {getData} style={{cursor:'pointer'}}>Data</a>
-      <a onClick= {logout} style={{cursor:'pointer',  padding: '2px 20px',color: '#e5840c'}}>Logout</a>
+    <div>
+      <div class="home-header">
+        <div class="home-logout" >
+          <a onClick={getData} style={{ cursor: 'pointer' }}>Data</a>
+          <a onClick={logout} style={{ cursor: 'pointer', padding: '2px 20px', color: '#e5840c' }}>Logout</a>
+        </div>
+      </div>
+      <PostListing />
+      <div className="card card-container" style={{ display: "none" }}>
+        <div>{content}</div>
       </div>
     </div>
-    <PostListing />
-    <div className = "card card-container" style={{ display: "none" }}>
-      <div>{content}</div>
-    </div>
-   </div>
 
   );
 }
 
 function App() {
-  
+
   const [userState, setUserState] = useState(false)
   const isLogedIn = (userStatus) => {
     setUserState(userStatus);
   }
   return (
-    <>
-    {userState ? <Homepage logout = {isLogedIn}/>:<User logedInUser = {isLogedIn} /> }
-    </>
+    <div>
+      {/* <>
+         {userState ? <Homepage logout={isLogedIn} /> : <User logedInUser={isLogedIn} />}
+      </> */}
+      <PostListing />
+      <ToastContainer autoClose={5000} />
+    </div>
   )
 }
 

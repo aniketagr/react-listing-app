@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PostEditing from './PostEditing';
+import Table from 'react-bootstrap/Table'
 
 function PostTable({ errorData, postsData, setterPost }) {
     const [editingCompFlag, setEditingCompFlag] = useState(false);
@@ -18,7 +19,7 @@ function PostTable({ errorData, postsData, setterPost }) {
     return (
         editingCompFlag ? <PostEditing recordId={recordId} /> :
             errorData ? errorData :
-                <table>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -62,7 +63,7 @@ function PostTable({ errorData, postsData, setterPost }) {
                             </tr>
                         }
                     </tbody>
-                </table>
+                </Table>
     )
 }
 
