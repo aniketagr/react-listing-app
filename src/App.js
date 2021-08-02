@@ -320,7 +320,7 @@ function Homepage(props) {
     <div class = "home-header">
       <div class= "home-logout" >
         <a onClick = {getData} style={{cursor:'pointer'}}>Data</a>
-      <a onClick= {logout} style={{cursor:'pointer',  padding: '2px 20px',color: '#e5840c'}}>Logout</a>
+        <a onClick= {logout} style={{cursor:'pointer',  padding: '2px 20px',color: '#e5840c'}}>Logout</a>
       </div>
     </div>
     <PostListing />
