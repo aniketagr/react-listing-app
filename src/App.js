@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 // Validation Module
 import Form from "react-validation/build/form";
@@ -346,7 +346,7 @@ function App() {
       <>
          {userState ? <Homepage logout={isLogedIn} /> : <User logedInUser={isLogedIn} />}
       </>
-      <ToastContainer autoClose={5000} />
+      {/* <ToastContainer autoClose={5000} /> */}
     </div>
   )
 }
