@@ -28,8 +28,8 @@
 /* Custom Style */
 
 .cards-container.cards {
-  max-width: 350px !important;
-  min-width: 300px;
+  max-width: 450px !important;
+  min-width: 400px;
   padding: 40px 40px;  
 }
 
