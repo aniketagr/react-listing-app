@@ -22,14 +22,12 @@ function PostListing() {
 
     return (
         <React.Fragment>
-            <div style={{marginTop:'50px'}}>
                 <PostListingHeader />
                 <PostTable
                     errorData={error}
                     postsData={posts}
                     setterPost={setPosts}  //Passing setter function to update post data
                 />
-            </div>
         </React.Fragment>
     )
 }

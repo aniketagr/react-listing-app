@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import PostListing from './PostListing';
 // import { useHistory } from 'react-router-dom';
 // import { hashHistory } from 'react-router';
 
@@ -34,6 +35,7 @@ function PostEditing({ recordId }) {
                 toast.success('Post updated successfully', {
                     position: toast.POSITION.TOP_RIGHT
                 });
+                <PostListing />
                 // history.push('./PostListing');
                 // hashHistory.push('PostListing');
             })
