@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import PostListing from './PostListing';
-// import { useHistory } from 'react-router-dom';
-// import { hashHistory } from 'react-router';
+// import { toast } from 'react-toastify';
 
-function PostEditing({ recordId }) {
-    // const history = useHistory();
+function PostEditing({ recordId, setEditingCompFlag }) {
     const [editPost, setEditPost] = useState({ userId: '', body: '', title: '' });
     const [editError, setEditError] = useState('');
 
@@ -32,18 +28,16 @@ function PostEditing({ recordId }) {
         axios.put(`http://localhost:8081/updatePost/${recordId}`, editPost)
             .then(res => {
                 console.log(res);
-                toast.success('Post updated successfully', {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-                <PostListing />
-                // history.push('./PostListing');
-                // hashHistory.push('PostListing');
+                // toast.success('Post updated successfully', {
+                //     position: toast.POSITION.TOP_RIGHT
+                // });
+                setEditingCompFlag(false);
             })
             .catch(err => {
                 console.log(err);
-                toast.error('Error occured while updating', {
-                    position: toast.POSITION.TOP_RIGHT,
-                });
+                // toast.error('Error occured while updating', {
+                //     position: toast.POSITION.TOP_RIGHT,
+                // });
             });
         e.preventDefault(); // Stop page reloading
     }

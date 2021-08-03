@@ -17,7 +17,7 @@ function PostTable({ errorData, postsData, setterPost }) {
     }
 
     return (
-        editingCompFlag ? <PostEditing recordId={recordId} /> :
+        editingCompFlag ? <PostEditing recordId={recordId} setEditingCompFlag={setEditingCompFlag} /> :
             errorData ? errorData :
                 <Table striped bordered hover>
                     <thead>
