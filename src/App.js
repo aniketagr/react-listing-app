@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -175,7 +175,7 @@ const Register = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.login}>Login</a></div>
+      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.login} href="!#">Login</a></div>
     </div>
 
   );
@@ -274,7 +274,7 @@ const Login = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.register}>Register</a></div>
+      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.register} href="!#">Register</a></div>
     </div>
   );
 };
@@ -322,8 +322,8 @@ function Homepage(props) {
     <div>
       <div class="home-header">
         <div class="home-logout" >
-          <a onClick={getData} style={{ cursor: 'pointer', display: "none" }}>Data</a>
-          <a onClick={logout} style={{ cursor: 'pointer', padding: '2px 20px', color: '#e5840c' }}>Logout</a>
+          <a onClick={getData} href="!#" style={{ cursor: 'pointer', display: "none" }}>Data</a>
+          <a onClick={logout} href="!#" style={{ cursor: 'pointer', padding: '2px 20px', color: '#e5840c' }}>Logout</a>
         </div>
       </div>
       <PostListing />

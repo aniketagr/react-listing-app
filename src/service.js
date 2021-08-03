@@ -55,12 +55,13 @@ const postData = () => {
     return axios.put(api_url, { headers: authHeader() });
   };
 
-export default {
-  register,
-  login,
-  logout,
-  getCurrentUser,
-  postData,
-  getData,
-  PutDate,
-};
+  const services = {
+    register,
+    login,
+    logout,
+    getCurrentUser,
+    postData,
+    getData,
+    PutDate,
+  }
+export default services;
