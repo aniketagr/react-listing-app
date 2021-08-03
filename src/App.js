@@ -308,7 +308,7 @@ function Homepage(props) {
   const [content, setContent] = useState("Welcome to our Application")
   const logout = () => {
     Service.logout();
-    props.logout(false);
+    props.logout (false);
   }
   const getData = () => {
     Service.getData().then(
@@ -320,8 +320,8 @@ function Homepage(props) {
   return (
 
     <div>
-      <div class="home-header">
-        <div class="home-logout" >
+      <div className="home-header">
+        <div className="home-logout" >
           <a onClick={getData} href="!#" style={{ cursor: 'pointer', display: "none" }}>Data</a>
           <a onClick={logout} href="!#" style={{ cursor: 'pointer', padding: '2px 20px', color: '#e5840c' }}>Logout</a>
         </div>
@@ -337,7 +337,8 @@ function Homepage(props) {
 
 function App() {
 
-  const [userState, setUserState] = useState(false)
+  let userFlag = Service.getCurrentUser() ? true : false;
+  const [userState, setUserState] = useState(userFlag);
   const isLogedIn = (userStatus) => {
     setUserState(userStatus);
   }
