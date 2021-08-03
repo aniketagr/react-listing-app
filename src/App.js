@@ -175,7 +175,7 @@ const Register = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.login} href="!#">Login</a></div>
+      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.login} href="!#"  style={{color:'#fff'}}>Login</a></div>
     </div>
 
   );
@@ -274,7 +274,7 @@ const Login = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
-      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.register} href="!#">Register</a></div>
+      <div style={{ cursor: 'pointer', textAlign: "right", fontSize: '11px' }}><a onClick={props.register} href="!#" style={{color:'#fff'}}>Register</a></div>
     </div>
   );
 };
