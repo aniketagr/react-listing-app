@@ -6,12 +6,12 @@ function PostTable({ errorData, postsData, setterPost }) {
     const [editingCompFlag, setEditingCompFlag] = useState(false);
     const [recordId, setRecordId] = useState('');
 
-    function editPost(id) {
+    const editPost = id => {
         setEditingCompFlag(true);
         setRecordId(id);
     }
 
-    function deletePost(id) {
+    const deletePost = id => {
         const filterPostData = postsData.filter(post => post.id !== id);
         setterPost(filterPostData);
     }
@@ -40,7 +40,7 @@ function PostTable({ errorData, postsData, setterPost }) {
                                         <td>{items.title}</td>
                                         <td>{items.body}</td>
                                         <td>
-                                            <button 
+                                            <button
                                                 onClick={() => editPost(items.id)}>
                                                 Edit
                                             </button>
