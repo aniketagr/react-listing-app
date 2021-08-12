@@ -59,6 +59,7 @@ function PostEditing({ recordId, setEditingCompFlag }) {
                 <input
                     type='text'
                     name='title'
+                    data-testid="title-input"
                     placeholder='title'
                     value={editPost.title}
                     onChange={e => setEditPost({ ...editPost, title: e.target.value })}

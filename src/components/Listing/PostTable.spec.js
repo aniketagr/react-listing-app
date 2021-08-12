@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, waitFor, screen, fireEvent, getByPlaceholderText, getByLabelText } from '@testing-library/react';
+import { render, waitFor, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import renderer from 'react-test-renderer';
 import axiosMock from 'axios';
 import PostTable from './PostTable';
 
@@ -18,9 +17,7 @@ test("List with no posts posttable", async () => {
     expect(container.firstChild.classList.contains('table-bordered')).toBe(true);
 });
 
-
-test("List with no posts posttable button click", async () => {
-    // const editPost = jest.fn();
+test("Edit button clicks", async () => {
     axiosMock.get.mockResolvedValueOnce({
         data: [{
             "userId": 1,
@@ -37,9 +34,18 @@ test("List with no posts posttable button click", async () => {
     fireEvent.click(button);
     const resolvedDiv = await waitFor(() => getByTestId('edit-form'));
     expect(resolvedDiv).toBeInTheDocument('title');
-    // expect(resolvedDiv).toHaveTextContent('Title :');
-    // expect(getByPlaceholderText('title')).toBeInTheDocument();
-    // expect(editPost).toHaveBeenCalled();
-    // expect(container.getByPlaceholderText('title')).toBe(true);
-    // expect(getByLabelText('Title')).toBeInTheDocument();
+    expect(screen.getByTestId('title-input')).toHaveAttribute('type', 'text');
+});
+
+
+test("Delete button clicks", async () => {
+    axiosMock.get.mockResolvedValueOnce({
+        data: []
+    });
+
+    render(<PostTable errorData={''} postsData={postsData} setterPost={() => console.log('setterfunction')} />);
+    const button = screen.getByRole('button', {
+        name: /Delete/i
+    });
+    fireEvent.click(button);
 });
