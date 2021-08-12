@@ -43,7 +43,7 @@ function PostEditing({ recordId, setEditingCompFlag }) {
     }
 
     return (
-        <form style={{ textAlign: 'center' }}>
+        <form style={{ textAlign: 'center' }} data-testid="edit-form">
             <div>
                 <label>User Id : </label>
                 <input

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post listing header component Post listing header snapshot 1`] = `
+<h1
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  Listing Posts
+</h1>
+`;

@@ -22,7 +22,7 @@ function PostListing() {
 
     return (
         <React.Fragment>
-            <div style={{ marginTop: '50px' }}>
+            <div style={{ marginTop: '50px' }} data-testid="list">
                 <PostListingHeader />
                 <PostTable
                     errorData={error}

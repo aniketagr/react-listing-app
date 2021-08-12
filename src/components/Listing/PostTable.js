@@ -32,6 +32,14 @@ function PostTable({ errorData, postsData, setterPost }) {
                     </thead>
                     <tbody>
                         {
+                            postsData && !postsData.length &&
+                            <tr>
+                                <td colSpan="6">
+                                    <div data-testid="loading">No Posts To Display</div>
+                                </td>
+                            </tr>
+                        }
+                        {
                             postsData && postsData.map(items => {
                                 return (
                                     <tr key={items.id}>
@@ -54,13 +62,6 @@ function PostTable({ errorData, postsData, setterPost }) {
                                     </tr>
                                 )
                             })
-                        }
-                        {postsData && !postsData.length &&
-                            <tr>
-                                <td colSpan="6">
-                                    <div>No Users To Display</div>
-                                </td>
-                            </tr>
                         }
                     </tbody>
                 </Table>
