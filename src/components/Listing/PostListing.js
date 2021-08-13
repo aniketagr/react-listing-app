@@ -1,6 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { useState, useEffect } from 'react';
 import PostListingHeader from './PostListingHeader';
 import PostTable from './PostTable';
 
