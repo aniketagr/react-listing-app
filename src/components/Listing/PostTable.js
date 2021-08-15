@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PostEditing from './PostEditing';
-import Table from 'react-bootstrap/Table'
+import {Table, Button} from 'react-bootstrap';
 
 function PostTable({ errorData, postsData, setterPost }) {
     const [editingCompFlag, setEditingCompFlag] = useState(false);
@@ -48,16 +48,16 @@ function PostTable({ errorData, postsData, setterPost }) {
                                         <td>{items.title}</td>
                                         <td>{items.body}</td>
                                         <td>
-                                            <button
+                                            <Button
                                                 onClick={() => editPost(items.id)}>
                                                 Edit
-                                            </button>
+                                            </Button>
                                         </td>
                                         <td>
-                                            <button
+                                            <Button
                                                 onClick={() => deletePost(items.id)}>
                                                 Delete
-                                            </button>
+                                            </Button>
                                         </td>
                                     </tr>
                                 )

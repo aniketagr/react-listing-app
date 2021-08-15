@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 // import { toast } from 'react-toastify';
 
 function PostEditing({ recordId, setEditingCompFlag }) {
@@ -44,9 +45,10 @@ function PostEditing({ recordId, setEditingCompFlag }) {
 
     return (
         <form style={{ textAlign: 'center' }} data-testid="edit-form">
-            <div>
-                <label>User Id : </label>
+            <div className='mb-3'>
+                <label className="form-label">User Id : </label>
                 <input
+                    className="form-control-l"
                     type='text'
                     name='userId'
                     placeholder='userId'
@@ -54,9 +56,10 @@ function PostEditing({ recordId, setEditingCompFlag }) {
                     onChange={e => setEditPost({ ...editPost, userId: e.target.value })}
                 />
             </div>
-            <div>
-                <label>Title : </label>
+            <div className='mb-3'>
+                <label className="form-label">Title : </label>
                 <input
+                    className="form-control-l"
                     type='text'
                     name='title'
                     data-testid="title-input"
@@ -65,17 +68,19 @@ function PostEditing({ recordId, setEditingCompFlag }) {
                     onChange={e => setEditPost({ ...editPost, title: e.target.value })}
                 />
             </div>
-            <div>
-                <label>Description : </label>
-                <input
-                    type='text'
+            <div className='mb-3'>
+                <label className="form-label">Description : </label>
+                <textarea
+                    className="form-control-l"
+                    rows='5'
+                    cols='23'
                     name='body'
                     placeholder='body'
                     value={editPost.body}
-                    onChange={e => setEditPost({ ...editPost, body: e.target.value })}
-                />
+                    onChange={e => setEditPost({ ...editPost, body: e.target.value })}>
+                </textarea>
             </div>
-            <button onClick={submitHandler}>Submit</button>
+            <Button className="mt-3" onClick={submitHandler}>Submit</Button>
         </form>
     )
 }
